@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="">
+
+    <label for="valor">Valor da conta:</label>
+    <input type="number" name="valor" placeholder="60">
+
+    <label for="gorjeta">Porcentagem da gorjeta:</label>
+    <input type="number" name="gorjeta" placeholder="10">%
+
+    <button>Calcular</button>
+  </form>
+  <div class="resultado"></div>
+</body>
+
+<script>
+  const valorInput = document.querySelector('input[name=valor]');
+  const gorjetaInput = document.querySelector('input[name=gorjeta]');
+  const button = document.querySelector('button');
+  const resultadoDiv = document.querySelector('.resultado')
+
+
+
+  function calculaValor() {
+    const valor = parseInt(valorInput.value)
+    const gorjeta = parseInt(gorjetaInput.value);
+
+    const valorGorjeta = (valor * gorjeta) / 100;
+    const total = valorGorjeta + valor
+
+    console.log('clicado')
+    const resultadoHTML = `
+    <p>Sua gorjeta será de: R$ ${valorGorjeta} Reais</p>
+    <p>O total a pagar incluindo a gorjeta é: R$ ${total} Reais</p>
+  `;
+
+  resultadoDiv.innerHTML = resultadoHTML;
+  }
+
+
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    calculaValor();
+  })
+
+</script>
+
+</html>
